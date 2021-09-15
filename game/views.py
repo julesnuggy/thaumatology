@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.template import loader
 
 from game.models import Character
 
@@ -8,8 +9,12 @@ def index(request):
 
 
 def characters(request):
-    all_characters = ', '.join([c.type for c in Character.objects.all()])
-    return HttpResponse(f'{all_characters}')
+    all_characters = Character.objects.all()
+    template = loader.get_template('game/index.html')
+    context = {
+        'characters': all_characters
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def get_character(request, character_id):

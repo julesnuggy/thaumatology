@@ -1,0 +1,9 @@
+{% if characters %}
+    <ul>
+    {% for c in characters %}
+        <li><a href="/game/get_character/{{ c.id }}">{{ c.type }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No characters to show.</p>
+{% endif %}
