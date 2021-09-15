@@ -1,1 +1,1 @@
-# Thaumatology Backend
+# Thaumatology
